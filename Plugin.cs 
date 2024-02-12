@@ -1,0 +1,24 @@
+using MediaBrowser.Common.Plugins;
+using MediaBrowser.Model.Plugins;
+
+namespace JellyfinIFramePlugin
+{
+    public class JellyfinIFramePlugin : BasePlugin<PluginConfiguration>, IHasWebPages
+    {
+        public override string Name => "Jellyfin-iFrame-Plugin";
+
+        public override Guid Id => Guid.Parse("votre-guid-unique-ici");
+
+        public IEnumerable<PluginPageInfo> GetPages()
+        {
+            return new[]
+            {
+                new PluginPageInfo
+                {
+                    Name = "JellyfinIFramePluginPage",
+                    EmbeddedResourcePath = $"{this.GetType().Namespace}.www.index.html"
+                }
+            };
+        }
+    }
+}
